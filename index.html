@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitab Undang-Undang Hukum Pidana Kota Exotic Premier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0d2e5c;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .subheader {
+            background-color: #0095ff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .form-container {
+            background-color: #0095ff;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        .notice-box {
+            background-color: white;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        .submit-btn {
+            background-color: #5bc0de;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 15px auto;
+        }
+        .crimes-section {
+            background-color: aqua;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .crimes-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .crimes-table th, .crimes-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .crimes-table th {
+            background-color: #7aa5e0;
+            color: black;
+        }
+        .crimes-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Kitab Undang-Undang Hukum Pidana Kota Exotic Premier</h1>
+    </div>
+    
+    <div class="subheader">
+        <h2>Kepolisan Kota Exotic Premier</h2>
+    </div>
+    
+    <div class="form-container">
+        <h3 class="form-title">Nama Suspect</h3>
+        <input type="text" class="form-control" id="suspectName" placeholder="Masukkan nama...">
+        
+        <div class="form-group">
+            <input type="text" class="form-control" id="phoneNumber" placeholder="Nomor Handphone...">
+        </div>
+        
+        <div class="notice-box">
+            MAXIMAL JAIL 90 BULAN, BOLEH DILEBIHKAN KALAU SUSPECT TIDAK MEMBAYAR INVOICE/INVOICE MENUMPUK.
+        </div>
+        
+        <div class="notice-box">
+            PENJARA KASUS DPO PENJARA 120 BULAN.
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="reportNumber" placeholder="Nomor Laporan Penahanan...">
+        </div>
+        
+        <div class="form-group">
+            <input type="datetime-local" class="form-control" id="detentionDateTime">
+        </div>
+        
+        <div class="form-group">
+            <input type="text" class="form-control" id="detentionLocation" placeholder="Lokasi Penahanan...">
+        </div>
+        
+        <div class="form-group">
+            <textarea class="form-control" id="violationDescription" placeholder="Deskripsi Pelanggaran..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" class="form-control" id="officerName" placeholder="Nama Petugas...">
+        </div>
+        
+        <div class="form-group">
+            <select class="form-control" id="officerRank">
+                <option value="">Pilih Jabatan...</option>
+                <option value="Brigadir">Brigadir</option>
+                <option value="Brigadir Kepala">Brigadir Kepala</option>
+                <option value="Inspektur">Inspektur</option>
+                <option value="Inspektur Dua">Inspektur Dua</option>
+                <option value="Inspektur Satu">Inspektur Satu</option>
+                <option value="Komisaris">Komisaris</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" class="form-control" id="officerPartner" placeholder="Rekan...">
+        </div>
+        
+        <div class="form-group">
+            <textarea class="form-control" id="evidenceDescription" placeholder="Deskripsi Barang Bukti..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <input type="number" class="form-control" id="evidenceCount" placeholder="Jumlah Barang Bukti...">
+        </div>
+        
+        <div class="form-group">
+            <input type="file" class="form-control" id="idCardPhoto" accept="image/*">
+        </div>
+        
+        <button class="submit-btn" id="submitBtn">Submit</button>
+    </div>
+    
+    <div class="crimes-section">
+        <h2>TINDAK PIDANA TERHADAP NYAWA</h2>
+    </div>
+    
+    <table class="crimes-table">
+        <thead>
+            <tr>
+                <th>PASAL(AYAT)</th>
+                <th>CEKLIS</th>
+                <th>PELANGGARAN</th>
+                <th>DENDA($)</th>
+                <th>MASA TAHANAN(BULAN)</th>
+            </tr>
+        </thead>
+        <tbody id="crimeTableBody">
+            <tr>
+                <td>7(1)</td>
+                <td><input type="checkbox" class="crime-checkbox" data-pasal="7(1)" data-pelanggaran="Terorisme" data-denda="500000" data-tahanan="99999"></td>
+                <td>Terorisme</td>
+                <td>500000</td>
+                <td>99999</td>
+            </tr>
+            <tr>
+                <td>7(2)</td>
+                <td><input type="checkbox" class="crime-checkbox" data-pasal="7(2)" data-pelanggaran="Percobaan Terorisme" data-denda="150000" data-tahanan="90"></td>
+                <td>Percobaan Terorisme</td>
+                <td>150000</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>8(1)</td>
+                <td><input type="checkbox" class="crime-checkbox" data-pasal="8(1)" data-pelanggaran="Pembunuhan" data-denda="200000" data-tahanan="90"></td>
+                <td>Pembunuhan</td>
+                <td>200000</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>8(2)</td>
+                <td><input type="checkbox" class="crime-checkbox" data-pasal="8(2)" data-pelanggaran="Percobaan Pembunuhan" data-denda="75000" data-tahanan="45"></td>
+                <td>Percobaan Pembunuhan</td>
+                <td>75000</td>
+                <td>45</td>
+            </tr>
+            <!-- Tambahkan pasal lainnya sesuai kebutuhan -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitBtn = document.getElementById('submitBtn');
+            
+            submitBtn.addEventListener('click', function() {
+                const selectedCrimes = document.querySelectorAll('.crime-checkbox:checked');
+                let pasal = [];
+                let totalDenda = 0;
+                let maxTahanan = 0;
+                let crimeDescriptions = [];
+                
+                selectedCrimes.forEach(function(crime) {
+                    pasal.push(crime.dataset.pasal);
+                    totalDenda += parseInt(crime.dataset.denda);
+                    maxTahanan = Math.max(maxTahanan, parseInt(crime.dataset.tahanan));
+                    crimeDescriptions.push(crime.dataset.pelanggaran);
+                });
+                
+                // Membuat format laporan
+                const report = {
+                    content: "**LAPORAN PENAHANAN**\n" +
+                        "**I. Informasi Penahanan:**\n" +
+                        "- Nomor Laporan Penahanan: " + document.getElementById('reportNumber').value + "\n" +
+                        "- Tanggal dan Waktu Penahanan: " + document.getElementById('detentionDateTime').value.replace('T', ' ') + "\n" +
+                        "- Lokasi Penahanan: " + document.getElementById('detentionLocation').value + "\n" +
+                        "- Deskripsi Pelanggaran: " + document.getElementById('violationDescription').value + "\n" +
+                        "**II. Informasi Tersangka:**\n" +
+                        "- Nama Tersangka: " + document.getElementById('suspectName').value + "\n" +
+                        "- Nomor Handphone: " + document.getElementById('phoneNumber').value + "\n" +
+                        "- Hukuman/Masa Tahanan: " + maxTahanan + " bulan\n" +
+                        "- Pasal: " + pasal.join(", ") + "\n" +
+                        "- Denda: $" + totalDenda + "\n" +
+                        "- Foto KTP: " + (document.getElementById('idCardPhoto').files.length > 0 ? document.getElementById('idCardPhoto').files[0].name : "Tidak ada") + "\n" +
+                        "**III. Identitas Petugas yang Menahan:**\n" +
+                        "- Nama Petugas: " + document.getElementById('officerName').value + "\n" +
+                        "- Divisi: Samapta\n" +
+                        "- Jabatan: " + document.getElementById('officerRank').value + "\n" +
+                        "- Rekan: " + document.getElementById('officerPartner').value + "\n" +
+                        "**IV. Barang Bukti yang Disita:**\n" +
+                        "- Deskripsi Barang Bukti: " + document.getElementById('evidenceDescription').value + "\n" +
+                        "- Jumlah Barang Bukti: " + document.getElementById('evidenceCount').value
+                };
+                
+                // URL webhook Discord
+                const webhookURL = "https://discord.com/api/webhooks/1345512886264402022/OLosHZ2RYCLTYfrf9R--rL9KBaK6Bcp1klc0w2lxvk19-t6TGOd54EQZMbWdNb3Sl_De"; // Ganti dengan URL webhook Discord yang valid
+                
+                // Mengirim data ke webhook Discord
+                fetch(webhookURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(report)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Laporan berhasil dikirim ke Discord!');
+                        // Reset form jika diperlukan
+                        document.querySelectorAll('.form-control').forEach(input => input.value = '');
+                        document.querySelectorAll('.crime-checkbox:checked').forEach(checkbox => checkbox.checked = false);
+                    } else {
+                        alert('Gagal mengirim laporan. Silahkan coba lagi.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat mengirim laporan.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
