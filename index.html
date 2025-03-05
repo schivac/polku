@@ -35,7 +35,8 @@
     </style>
 </head>
 <body>
-    <h1>TINDAK PIDANA TERORISME DAN HUKUMAN MATI</h1>
+    <h1>UUD Polisi Kuyland 2025</h1>
+    <h2>TINDAK PIDANA TERHADAP NYAWA</h2>
     <table>
         <thead>
             <tr>
@@ -48,86 +49,115 @@
         </thead>
         <tbody>
             <tr>
-                <td>19(1)</td>
-                <td><input type="checkbox"></td>
-                <td>Terorisme</td>
-                <td>150000</td>
-                <td>Hukuman Mati</td>
+                <td>7(1)</td>
+                <td><input type="checkbox" id="7-1"></td>
+                <td>Percobaan Terorisme</td>
+                <td>80000</td>
+                <td>100</td>
             </tr>
             <tr>
-                <td>19(2)</td>
-                <td><input type="checkbox"></td>
-                <td>Penembakan di area kantor hukum</td>
-                <td>120000</td>
-                <td>Hukuman Mati</td>
+                <td>8(1)</td>
+                <td><input type="checkbox" id="8-1"></td>
+                <td>Pembunuhan</td>
+                <td>80000</td>
+                <td>70</td>
             </tr>
             <tr>
-                <td>19(3)</td>
-                <td><input type="checkbox"></td>
-                <td>Penyanderaan skala besar</td>
-                <td>120000</td>
-                <td>Hukuman Mati</td>
+                <td>8(2)</td>
+                <td><input type="checkbox" id="8-2"></td>
+                <td>Percobaan Pembunuhan</td>
+                <td>40000</td>
+                <td>60</td>
             </tr>
             <tr>
-                <td>19(4)</td>
-                <td><input type="checkbox"></td>
-                <td>Penyanderaan instansi</td>
-                <td>120000</td>
-                <td>Hukuman Mati</td>
+                <td>9(1)</td>
+                <td><input type="checkbox" id="9-1"></td>
+                <td>Penodongan ke warqa</td>
+                <td>30000</td>
+                <td>40</td>
             </tr>
             <tr>
-                <td>19(5)</td>
-                <td><input type="checkbox"></td>
-                <td>Tindakan mengakibatkan kota siaga 3</td>
-                <td>130000</td>
-                <td>Hukuman Mati</td>
+                <td>9(2)</td>
+                <td><input type="checkbox" id="9-2"></td>
+                <td>Penyanderaan</td>
+                <td>30000</td>
+                <td>35</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>TINDAK PIDANA TERHADAP HARTA BENDA</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Pasal (Ayat)</th>
+                <th>Ceklis</th>
+                <th>Pelanggaran</th>
+                <th>Denda</th>
+                <th>Massa Tahanan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10(1)</td>
+                <td><input type="checkbox" id="10-1"></td>
+                <td>Memberikan informasi palsu</td>
+                <td>2500</td>
+                <td>10</td>
             </tr>
             <tr>
-                <td>19(6)</td>
-                <td><input type="checkbox"></td>
-                <td>Mengganggu proses jalan peleburan</td>
-                <td>140000</td>
-                <td>Hukuman Mati</td>
+                <td>10(2)</td>
+                <td><input type="checkbox" id="10-2"></td>
+                <td>Melakukan Peninsula</td>
+                <td>5000</td>
+                <td>15</td>
             </tr>
             <tr>
-                <td>19(7)</td>
-                <td><input type="checkbox"></td>
-                <td>Catatan criminal sebanyak 7 kali</td>
-                <td>120000</td>
-                <td>Hukuman Mati</td>
+                <td>11(1)</td>
+                <td><input type="checkbox" id="11-1"></td>
+                <td>Pericurian</td>
+                <td>5500</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>11(2)</td>
+                <td><input type="checkbox" id="11-2"></td>
+                <td>Pembegalan</td>
+                <td>6000</td>
+                <td>20</td>
             </tr>
         </tbody>
     </table>
 
     <button onclick="submitForm()">Kirimkan Ke Discord</button>
-    <button onclick="resetForm()">Reset</button>
-
-    <h2>Ringkasan</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>UU</th>
-                <th>Tindak Pidana</th>
-                <th>Denda</th>
-                <th>Penjara</th>
-                <th>Lokasi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>17(1), 17(2), 17(4)</td>
-                <td>Penyalahgunaan barang netral, Menyimpan cocaine/kanabis, Menanam tanaman cocaine/kanabis</td>
-                <td>56000</td>
-                <td>80 bulan</td>
-                <td>Federal</td>
-            </tr>
-        </tbody>
-    </table>
 
     <script>
         function submitForm() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-            let message = "Laporan Tindak Pidana:\n";
+            let message = "**LAPORAN PENAHANAN**\n";
+            message += "**I. Informasi Penahanan:**\n";
+            message += `- Nomor Laporan Penahanan: ${Math.floor(Math.random() * 100000)}\n`;
+            message += `- Tanggal dan Waktu Penahanan: ${new Date().toLocaleString()}\n`;
+            message += "- Lokasi Penahanan: Polda/Federal\n";
+            message += "- Deskripsi Pelanggaran: \n";
+
+            message += "**II. Informasi Tersangka:**\n";
+            message += "- Nama Tersangka: \n";
+            message += "- Nomor Handphone: \n";
+            message += "- Hukuman/Masa Tahanan: \n";
+            message += "- Pasal: \n";
+            message += "- Denda: \n";
+            message += "- Foto KTP: \n";
+
+            message += "**III. Identitas Petugas yang Menahan:**\n";
+            message += "- Nama Petugas: \n";
+            message += "- Divisi: \n";
+            message += "- Jabatan: \n";
+            message += "- Rekan: \n";
+
+            message += "**IV. Barang Bukti yang Disita:**\n";
+            message += "- Deskripsi Barang Bukti: \n";
+            message += "- Jumlah Barang Bukti: \n";
 
             checkboxes.forEach(checkbox => {
                 const row = checkbox.closest('tr');
@@ -135,10 +165,10 @@
                 const pelanggaran = row.cells[2].innerText;
                 const denda = row.cells[3].innerText;
                 const hukuman = row.cells[4].innerText;
-                message += `Pasal: ${pasal}\nPelanggaran: ${pelanggaran}\nDenda: ${denda}\nHukuman: ${hukuman}\n\n`;
+                message += `\n**Pasal:** ${pasal}\n**Pelanggaran:** ${pelanggaran}\n**Denda:** ${denda}\n**Hukuman:** ${hukuman}\n`;
             });
 
-            const webhookURL = 'URL_WEBHOOK_DISCORD_ANDA';
+            const webhookURL = 'https://discord.com/api/webhooks/1345512886264402022/OLosHZ2RYCLTYfrf9R--rL9KBaK6Bcp1klc0w2lxvk19-t6TGOd54EQZMbWdNb3Sl_De';
 
             fetch(webhookURL, {
                 method: 'POST',
@@ -156,13 +186,6 @@
             })
             .catch((error) => {
                 console.error('Error:', error);
-            });
-        }
-
-        function resetForm() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
             });
         }
     </script>
