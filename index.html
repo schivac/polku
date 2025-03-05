@@ -4,25 +4,167 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Tindak Pidana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Formulir Tindak Pidana</h1>
-    <form id="crimeForm">
-        <label for="pasal">Pasal (Ayat):</label>
-        <input type="text" id="pasal" name="pasal" required><br><br>
+    <h1>TINDAK PIDANA TERORISME DAN HUKUMAN MATI</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Pasal (Ayat)</th>
+                <th>Ceklis</th>
+                <th>Pelanggaran</th>
+                <th>Denda</th>
+                <th>Massa Tahanan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>19(1)</td>
+                <td><input type="checkbox"></td>
+                <td>Terorisme</td>
+                <td>150000</td>
+                <td>Hukuman Mati</td>
+            </tr>
+            <tr>
+                <td>19(2)</td>
+                <td><input type="checkbox"></td>
+                <td>Penembakan di area kantor hukum</td>
+                <td>120000</td>
+                <td>Hukuman Mati</td>
+            </tr>
+            <tr>
+                <td>19(3)</td>
+                <td><input type="checkbox"></td>
+                <td>Penyanderaan skala besar</td>
+                <td>120000</td>
+                <td>Hukuman Mati</td>
+            </tr>
+            <tr>
+                <td>19(4)</td>
+                <td><input type="checkbox"></td>
+                <td>Penyanderaan instansi</td>
+                <td>120000</td>
+                <td>Hukuman Mati</td>
+            </tr>
+            <tr>
+                <td>19(5)</td>
+                <td><input type="checkbox"></td>
+                <td>Tindakan mengakibatkan kota siaga 3</td>
+                <td>130000</td>
+                <td>Hukuman Mati</td>
+            </tr>
+            <tr>
+                <td>19(6)</td>
+                <td><input type="checkbox"></td>
+                <td>Mengganggu proses jalan peleburan</td>
+                <td>140000</td>
+                <td>Hukuman Mati</td>
+            </tr>
+            <tr>
+                <td>19(7)</td>
+                <td><input type="checkbox"></td>
+                <td>Catatan criminal sebanyak 7 kali</td>
+                <td>120000</td>
+                <td>Hukuman Mati</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <label for="pelanggaran">Pelanggaran:</label>
-        <input type="text" id="pelanggaran" name="pelanggaran" required><br><br>
+    <button onclick="submitForm()">Kirimkan Ke Discord</button>
+    <button onclick="resetForm()">Reset</button>
 
-        <label for="denda">Denda:</label>
-        <input type="number" id="denda" name="denda" required><br><br>
+    <h2>Ringkasan</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>UU</th>
+                <th>Tindak Pidana</th>
+                <th>Denda</th>
+                <th>Penjara</th>
+                <th>Lokasi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>17(1), 17(2), 17(4)</td>
+                <td>Penyalahgunaan barang netral, Menyimpan cocaine/kanabis, Menanam tanaman cocaine/kanabis</td>
+                <td>56000</td>
+                <td>80 bulan</td>
+                <td>Federal</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <label for="penjara">Massa Tahanan:</label>
-        <input type="text" id="penjara" name="penjara" required><br><br>
+    <script>
+        function submitForm() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            let message = "Laporan Tindak Pidana:\n";
 
-        <button type="submit">Kirim</button>
-    </form>
+            checkboxes.forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                const pasal = row.cells[0].innerText;
+                const pelanggaran = row.cells[2].innerText;
+                const denda = row.cells[3].innerText;
+                const hukuman = row.cells[4].innerText;
+                message += `Pasal: ${pasal}\nPelanggaran: ${pelanggaran}\nDenda: ${denda}\nHukuman: ${hukuman}\n\n`;
+            });
 
-    <script src="script.js"></script>
+            const webhookURL = 'URL_WEBHOOK_DISCORD_ANDA';
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ content: message }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Data berhasil dikirim ke Discord!');
+                } else {
+                    alert('Gagal mengirim data.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        function resetForm() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+        }
+    </script>
 </body>
 </html>
