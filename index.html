@@ -788,53 +788,53 @@
             });
 
             // Update ringkasan laporan
-            function submitForm() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    let message = "**LAPORAN PENAHANAN**\n\n";
-    message += "**I. Informasi Penahanan:**\n";
-    message += `- Nomor Laporan Penahanan: ${Math.floor(Math.random() * 100000)}\n`;
-    message += `- Tanggal dan Waktu Penahanan: ${new Date().toLocaleString()}\n`;
-    message += `- Lokasi Penahanan: ${document.getElementById('lokasi').value}\n`;
-    message += `- Deskripsi Pelanggaran: ${checkboxes.length} pelanggaran\n\n`;
-
-    message += "**II. Informasi Tersangka:**\n";
-    message += `- Nama Tersangka: ${document.getElementById('namaTersangka').value}\n`;
-    message += `- Nomor Handphone: ${document.getElementById('noHandphone').value}\n`;
-    message += `- Hukuman/Masa Tahanan: ${totalHukuman} bulan\n`;
-    message += `- Pasal: ${pasalList.join(", ")}\n`;
-    message += `- Denda: $${totalDenda.toLocaleString()}\n`;
-    message += `- Foto KTP: Ada/Tidak\n\n`;
-
-    message += "**III. Identitas Petugas yang Menahan:**\n";
-    message += `- Nama Petugas: ${document.getElementById('namaPetugas').value}\n`;
-    message += `- Divisi: ${document.getElementById('divisi').value}\n`;
-    message += `- Jabatan: ${document.getElementById('jabatan').value}\n`;
-    message += `- Rekan: ${document.getElementById('rekan').value}\n\n`;
-
-    message += "**IV. Barang Bukti yang Disita:**\n";
-    message += `- Deskripsi Barang Bukti: ${document.getElementById('barangBukti').value}\n`;
-    message += `- Jumlah Barang Bukti: ${document.getElementById('jumlahBarangBukti').value}\n`;
-
-    const webhookURL = 'https://discord.com/api/webhooks/1345512886264402022/OLosHZ2RYCLTYfrf9R--rL9KBaK6Bcp1klc0w2lxvk19-t6TGOd54EQZMbWdNb3Sl_De';
-
-    fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ content: message }),
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Data berhasil dikirim ke Discord!');
-        } else {
-            alert('Gagal mengirim data.');
+            document.getElementById('ringkasanLaporan').innerHTML = `
+                **LAPORAN PENAHANAN**
+                **I. Informasi Penahanan:**
+                - Nomor Laporan Penahanan: ${Math.floor(Math.random() * 100000)}
+                - Tanggal dan Waktu Penahanan: ${new Date().toLocaleString()}
+                - Lokasi Penahanan: ${document.getElementById('lokasi').value}
+                - Deskripsi Pelanggaran: ${pelanggaranList.join(", ")}
+                **II. Informasi Tersangka:**
+                - Nama Tersangka: ${document.getElementById('namaTersangka').value}
+                - Nomor Handphone: ${document.getElementById('noHandphone').value}
+                - Hukuman/Masa Tahanan: ${totalHukuman} bulan
+                - Pasal: ${pasalList.join(", ")}
+                - Denda: $${totalDenda.toLocaleString()}
+                - Foto KTP: Ada/Tidak
+                **III. Identitas Petugas yang Menahan:**
+                - Nama Petugas: ${document.getElementById('namaPetugas').value}
+                - Divisi: ${document.getElementById('divisi').value}
+                - Jabatan: ${document.getElementById('jabatan').value}
+                - Rekan: ${document.getElementById('rekan').value}
+                **IV. Barang Bukti yang Disita:**
+                - Deskripsi Barang Bukti: ${document.getElementById('barangBukti').value}
+                - Jumlah Barang Bukti: ${document.getElementById('jumlahBarangBukti').value}
+            `;
         }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-}
+
+        function submitForm() {
+            const message = document.getElementById('ringkasanLaporan').innerText;
+            const webhookURL = 'https://discord.com/api/webhooks/1345512886264402022/OLosHZ2RYCLTYfrf9R--rL9KBaK6Bcp1klc0w2lxvk19-t6TGOd54EQZMbWdNb3Sl_De';
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ content: message }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Data berhasil dikirim ke Discord!');
+                } else {
+                    alert('Gagal mengirim data.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
     </script>
 </body>
 </html>
