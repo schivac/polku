@@ -674,32 +674,11 @@
         </tr>
     </tbody>
 </table>
-<!-- Tombol TOTAL dengan gaya besar dan mencolok -->
-<button onclick="hitungTotal()" style="
-    padding: 15px 30px;
-    font-size: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-">
-    TOTAL
-</button>
-<!-- Tempat untuk menampilkan hasil -->
-<div id="hasil-total" style="
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    width: fit-content;
-">
-</div> <!-- ← ini wajib ditutup -->
+<!-- Tombol TOTAL -->
+<button id="btn-total" onclick="hitungTotal()">TOTAL</button>
+
+<!-- Hasil ditampilkan di sini -->
+<div id="hasil-total"></div>
 <script>
     function hitungTotal() {
         // Ambil semua checkbox yang dicentang
