@@ -674,7 +674,6 @@
         </tr>
     </tbody>
 </table>
-        <!-- Tombol TOTAL -->
 <!-- Tombol TOTAL dengan gaya besar dan mencolok -->
 <button onclick="hitungTotal()" style="
     padding: 15px 30px;
@@ -700,7 +699,9 @@
     border: 2px solid #ccc;
     border-radius: 10px;
     width: fit-content;
-</div>
+">
+</div> <!-- ← ini yang hilang sebelumnya -->
+
 <script>
     function hitungTotal() {
         // Ambil semua checkbox yang dicentang
@@ -732,5 +733,5 @@
     function formatRupiah(angka) {
         return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-</script>
+</script
 
