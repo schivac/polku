@@ -173,7 +173,7 @@
         <h1>Dibuat Oleh Mariono Senopati</h1>
         
         <div class="search-container">
-            <input type="text" class="search-box" id="searchBox" placeholder="Cari kata kunci..." onkeyup="searchTable()">
+    <input type="text" class="search-box" id="searchBox" placeholder="Cari kata kunci..." onkeyup="searchTable()">
         </div>
         
         <div id="selected-violations" style="display: none;">
@@ -1022,5 +1022,37 @@ function formatRupiah(angka) {
 
 // Dummy untuk onchange (opsional)
 function updateSelections() {}
+</script>
+<script>
+function searchTable() {
+    const input = document.getElementById("searchBox").value.toLowerCase();
+    const tables = document.querySelectorAll("table"); // Jika ada banyak tabel
+    let found = false;
+
+    tables.forEach(table => {
+        const rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) { // skip header
+            const rowText = rows[i].innerText.toLowerCase();
+
+            if (rowText.includes(input)) {
+                rows[i].scrollIntoView({ behavior: "smooth", block: "center" });
+                rows[i].style.backgroundColor = "#ffff99"; // highlight
+                found = true;
+
+                // Hapus highlight setelah beberapa detik
+                setTimeout(() => {
+                    rows[i].style.backgroundColor = "";
+                }, 2000);
+
+                return; // stop setelah ketemu pertama kali
+            }
+        }
+    });
+
+    if (!found && input !== "") {
+        alert("Tidak ditemukan.");
+    }
+}
 </script>
 
