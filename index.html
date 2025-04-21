@@ -161,6 +161,18 @@
             border: 1px solid #111;
         }
     </style>
+    <script>
+        function updateSelections() {
+            let totalFine = 0;
+            let totalJail = 0;
+            const violationsList = document.getElementById('violations-list');
+            violationsList.innerHTML = ''; // Clear previous selections
+
+            // Ambil semua checkbox
+            const checkboxes = document.querySelectorAll('.checkbox');
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const fine = parseInt(checkbox.getAttribute('data-f
 </head>
 <body>
     <div class="container">
