@@ -67,12 +67,19 @@
             background-color: red;
         }
         
-        .table2 th {
+       .table2 th {
+        background-color: #a8d08d;
+        color: black;
+        text-align: center;
+        }
+
+        
+        .table3 th {
             background-color: gold;
             color: black;
         }
         
-        .table3 th {
+        .table4 th {
             background-color: red;
         }
         
@@ -347,9 +354,82 @@
             </tbody>
         </table>
 
+        <table>
         <!-- Table 2: Medium Violations -->
-        <div class="table-header" style="background-color: gold; color: black;">PELANGGARAN SEDANG</div>
+        <div class="table-header" style="background-color: #a8d08d; color: black;">PELANGGARAN RINGAN</div>
         <table class="table2" id="table2">
+            <thead>
+                <tr>
+            <th>Pilih</th>
+            <th>Kode</th>
+            <th>Deskripsi</th>
+            <th>Denda</th>
+            <th>Hukuman & Penjara</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B1" data-desc="TIDAK MEMILIKI KARTU IDENTITAS / KTP" data-fine="1500" data-jail="SANKSI SOSIAL"></td>
+        <td>B1</td><td>TIDAK MEMILIKI KARTU IDENTITAS / KTP</td><td>1.500</td><td>SANKSI SOSIAL</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B2" data-desc="MENYALAHGUNAKAN PANGGILAN HOTLINE" data-fine="2500" data-jail="SANKSI SOSIAL"></td>
+        <td>B2</td><td>MENYALAHGUNAKAN PANGGILAN HOTLINE</td><td>2.500</td><td>SANKSI SOSIAL</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B3" data-desc="MERUSAK FASILITAS UMUM" data-fine="3000" data-jail="5"></td>
+        <td>B3</td><td>MERUSAK FASILITAS UMUM</td><td>3.000</td><td>5</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B4" data-desc="MEMBUAT KERIBUTAN DI TEMPAT UMUM" data-fine="3500" data-jail="6"></td>
+        <td>B4</td><td>MEMBUAT KERIBUTAN DI TEMPAT UMUM</td><td>3.500</td><td>6</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B5" data-desc="PENCEMARAN NAMA BAIK WARGA" data-fine="3500" data-jail="7"></td>
+        <td>B5</td><td>PENCEMARAN NAMA BAIK WARGA</td><td>3.500</td><td>7</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B6" data-desc="KEKERASAN FISIK TERHADAP WARGA" data-fine="4000" data-jail="5"></td>
+        <td>B6</td><td>KEKERASAN FISIK TERHADAP WARGA</td><td>4.000</td><td>5</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B7" data-desc="PENIPUAN TERHADAP WARGA" data-fine="4500" data-jail="6"></td>
+        <td>B7</td><td>PENIPUAN TERHADAP WARGA</td><td>4.500</td><td>6</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B8" data-desc="PELECEHAN SEKSUAL TERHADAP WARGA" data-fine="5000" data-jail="9"></td>
+        <td>B8</td><td>PELECEHAN SEKSUAL TERHADAP WARGA</td><td>5.000</td><td>9</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B9" data-desc="MERUSAK / MEREBUT ASET PRIBADI MILIK WARGA" data-fine="5000" data-jail="6"></td>
+        <td>B9</td><td>MERUSAK / MEREBUT ASET PRIBADI MILIK WARGA</td><td>5.000</td><td>6</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B10" data-desc="PENCEMARAN NAMA BAIK INSTANSI" data-fine="5500" data-jail="10"></td>
+        <td>B10</td><td>PENCEMARAN NAMA BAIK INSTANSI</td><td>5.500</td><td>10</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B11" data-desc="PENGHINAAN TERHADAP BAIK INSTANSI" data-fine="5500" data-jail="10"></td>
+        <td>B11</td><td>PENGHINAAN TERHADAP BAIK INSTANSI</td><td>5.500</td><td>10</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B12" data-desc="PEMBERIAN INFORMASI PALSU" data-fine="4500" data-jail="7"></td>
+        <td>B12</td><td>PEMBERIAN INFORMASI PALSU</td><td>4.500</td><td>7</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B13" data-desc="MEMBAWA SENJATA TAJAM/TUMPUL DI TEMPAT UMUM" data-fine="5000" data-jail="9"></td>
+        <td>B13</td><td>MEMBAWA SENJATA TAJAM/TUMPUL DI TEMPAT UMUM</td><td>5.000</td><td>9</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="checkbox" data-code="B14" data-desc="KABUR SAAT DI BERHENTIKAN" data-fine="7000" data-jail="10"></td>
+        <td>B14</td><td>KABUR SAAT DI BERHENTIKAN</td><td>7.000</td><td>10</td>
+    </tr>
+            </tbody>
+        </table>
+
+        <!-- Table 3: Medium Violations -->
+        <div class="table-header" style="background-color: gold; color: black;">PELANGGARAN SEDANG</div>
+        <table class="table3" id="table3">
             <thead>
                 <tr>
                     <th>Ceklis</th>
@@ -524,9 +604,9 @@
             </tbody>
         </table>
 
-        <!-- Table 3: Severe Violations -->
+        <!-- Table 4: Severe Violations -->
         <div class="table-header" style="background-color: red;">PELANGGARAN BERAT</div>
-        <table class="table3" id="table3">
+        <table class="table4" id="table4">
             <thead>
                 <tr>
                     <th>Ceklis</th>
