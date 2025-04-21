@@ -1026,26 +1026,30 @@ function updateSelections() {}
 <script>
 function searchTable() {
     const input = document.getElementById("searchBox").value.toLowerCase();
-    const tables = document.querySelectorAll("table"); // Jika ada banyak tabel
+    const tables = document.querySelectorAll("table");
     let found = false;
 
     tables.forEach(table => {
         const rows = table.getElementsByTagName("tr");
 
-        for (let i = 1; i < rows.length; i++) { // skip header
+        for (let i = 1; i < rows.length; i++) {
             const rowText = rows[i].innerText.toLowerCase();
 
             if (rowText.includes(input)) {
-                rows[i].scrollIntoView({ behavior: "smooth", block: "center" });
-                rows[i].style.backgroundColor = "#ffff99"; // highlight
+                // Scroll ke header div sebelum tabel ini
+                const sectionHeader = table.previousElementSibling;
+                if (sectionHeader && sectionHeader.classList.contains('table-header')) {
+                    sectionHeader.scrollIntoView({ behavior: "smooth", block: "start" });
+
+                    // Highlight judul
+                    sectionHeader.style.backgroundColor = "#ffff99";
+                    setTimeout(() => {
+                        sectionHeader.style.backgroundColor = ""; // Kembalikan warna
+                    }, 2000);
+                }
+
                 found = true;
-
-                // Hapus highlight setelah beberapa detik
-                setTimeout(() => {
-                    rows[i].style.backgroundColor = "";
-                }, 2000);
-
-                return; // stop setelah ketemu pertama kali
+                return; // stop setelah pertama ditemukan
             }
         }
     });
@@ -1055,4 +1059,5 @@ function searchTable() {
     }
 }
 </script>
+
 
