@@ -737,7 +737,7 @@ function hitungTotal() {
         <ul>${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
         Total Denda: Rp. ${formatRupiah(totalDenda)}<br>
         Total Penjara: ${totalJail} bulan<br>
-        Impound Kendaraan: ${perluImpound ? 'YA (ada Samsat atau Impound)' : 'Tidak'}
+        Impound Kendaraan: ${perluImpound ? 'YA' : 'Tidak'}
     `;
     document.getElementById('hasil-total').innerHTML = hasil;
 }
