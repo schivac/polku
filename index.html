@@ -709,6 +709,7 @@ function hitungTotal() {
     let totalDenda = 0;
     let totalJail = 0;
     let deskripsiList = [];
+    let perluImpound = false;
 
     checkboxes.forEach(cb => {
         const denda = parseInt(cb.dataset.fine) || 0;
@@ -719,6 +720,15 @@ function hitungTotal() {
         totalDenda += denda;
         totalJail += jail;
         deskripsiList.push(desc);
+
+        // Cek apakah perlu impound
+        if (
+            cb.dataset.jail.toUpperCase().includes("IMPOUND") ||
+            cb.dataset.fine.toUpperCase().includes("IMPOUND") ||
+            desc.toUpperCase().includes("SAMSAT")
+        ) {
+            perluImpound = true;
+        }
     });
 
     const hasil = `
@@ -726,7 +736,8 @@ function hitungTotal() {
         Deskripsi Pelanggaran:<br>
         <ul>${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
         Total Denda: Rp. ${formatRupiah(totalDenda)}<br>
-        Total Penjara: ${totalJail} bulan
+        Total Penjara: ${totalJail} bulan<br>
+        Impound Kendaraan: ${perluImpound ? 'YA (ada Samsat atau Impound)' : 'Tidak'}
     `;
     document.getElementById('hasil-total').innerHTML = hasil;
 }
