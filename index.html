@@ -926,8 +926,8 @@ function hitungTotal() {
         Deskripsi Pelanggaran:<br>
         <ul>${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
         Total Denda: Rp. ${formatRupiah(totalDenda)}<br>
-        Total Penjara: ${totalJail} bulan$<br>
-        Apakah Dihukum Mati: {adaHukumanMati ? ', <span style="color:red;">HUKUMAN MATI</span>' : ''}
+        Total Penjara: ${totalJail} bulan<br>
+        Apakah Dihukum Mati: ${adaHukumanMati ? ', <span style="color:red;">HUKUMAN MATI</span>' : ''}<b>
         Impound Kendaraan: ${perluImpound ? 'YA' : 'Tidak'}
     `;
     document.getElementById('hasil-total').innerHTML = hasil;
