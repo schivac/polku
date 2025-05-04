@@ -996,7 +996,7 @@ function kirimKeDiscord() {
                 { name: "FOTO", value: foto },
                 { name: "BERAPA BULAN", value: currentData.totalJail.toString() },
                 { name: "DENDA", value: currentData.totalDenda },
-                { name: "KRONOLOGI SUSPECT", value: currentData.deskripsiList.join('\n• ') },
+                { name: "KRONOLOGI SUSPECT", value: '• ' + currentData.deskripsiList.join('\n• ') },
                 { name: "HUKUMAN MATI", value: currentData.adaHukumanMati ? "YA" : "TIDAK" }
             ],
             timestamp: new Date().toISOString()
