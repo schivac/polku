@@ -922,14 +922,14 @@ function hitungTotal() {
     });
 
     const hasil = `
-        Jumlah Pasal: ${totalPasal} pasal<br>
-        Deskripsi Pelanggaran:<br>
-        <ul>${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
-        Total Denda: Rp. ${formatRupiah(totalDenda)}<br>
-        Total Penjara: ${totalJail} bulan<br>
-        Apakah Dihukum Mati: ${adaHukumanMati ? ', <span style="color:red;">HUKUMAN MATI</span>' : ''}<b>
-        Impound Kendaraan: ${perluImpound ? 'YA' : 'Tidak'}
-    `;
+    Jumlah Pasal: ${totalPasal} pasal<br>
+    Deskripsi Pelanggaran:<br>
+    <ul style="margin-left: 20px;">${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
+    Total Denda: Rp. ${formatRupiah(totalDenda)}<br>
+    Total Penjara: ${totalJail} hari<br>
+    ${adaHukumanMati ? '<span style="color:red; font-weight:bold;">HUKUMAN MATI</span><br>' : ''}
+    Impound Kendaraan: ${perluImpound ? '<span style="font-weight:bold;">YA</span>' : 'Tidak'}
+`;
     document.getElementById('hasil-total').innerHTML = hasil;
 
     // Tampilkan tabel pasal dan penjara
