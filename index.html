@@ -934,7 +934,7 @@ function hitungTotal() {
     // Tampilkan tabel pasal dan penjara
     const pasalString = kodePasalList.join(', ');
     const isiTabel = `
-        <p><strong>${pasalString}</strong> — <strong>${totalJail} bulan</strong>${adaHukumanMati ? ', <span style="color:red;">HUKUMAN MATI</span>' : ''}</p>
+        <p><strong>${pasalString}</strong> — <strong>${totalJail} bulan</strong></p>
     `;
     document.getElementById('isi-tabel-uu').innerHTML = isiTabel;
     document.getElementById('tabel-uu').style.display = 'block';
