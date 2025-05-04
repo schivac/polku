@@ -833,6 +833,14 @@
     </button>
 </div>
 
+<!-- Tambahkan elemen hasil total -->
+<div id="hasil-total" style="margin-top: 20px;"></div>
+
+<!-- Tambahkan elemen tabel UU -->
+<div id="tabel-uu" style="margin-top: 20px; display: none;">
+    <div id="isi-tabel-uu"></div>
+</div>
+
 <!-- Modal untuk input data sebelum dikirim ke Discord -->
 <div id="discordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
     <div style="background-color: white; padding: 20px; border-radius: 10px; width: 500px; max-width: 90%;">
@@ -869,6 +877,8 @@
 <script>
 // Variabel global untuk menyimpan data
 let currentData = {};
+
+// Semua function kamu tetap sama di sini, tidak perlu diubah, karena error utama dari HTML nya.
 
 function hitungTotal() {
     const checkboxes = document.querySelectorAll('.checkbox:checked');
@@ -908,7 +918,6 @@ function hitungTotal() {
             jailAngka = parseInt(jailRaw) || 0;
         }
 
-        // Hitung denda
         const denda = isNaN(parseInt(fineRaw)) ? 0 : parseInt(fineRaw);
 
         totalPasal++;
@@ -917,7 +926,6 @@ function hitungTotal() {
         deskripsiList.push(desc);
         kodePasalList.push(code);
 
-        // Deteksi perlu impound
         if (jailRaw.toUpperCase().includes("IMPOUND") ||
             fineRaw.toUpperCase().includes("IMPOUND") ||
             desc.toUpperCase().includes("SAMSAT")) {
@@ -925,7 +933,6 @@ function hitungTotal() {
         }
     });
 
-    // Format hasil untuk ditampilkan
     const hasil = `
         <div style="text-align: left; line-height: 1.6;">
             <strong>Jumlah Pasal:</strong> ${totalPasal} pasal<br>
@@ -940,11 +947,9 @@ function hitungTotal() {
         </div>
     `;
     
-    // Tampilkan hasil
     document.getElementById('hasil-total').innerHTML = hasil;
     document.getElementById('hasil-total').style.display = 'block';
 
-    // Simpan data untuk Discord
     currentData = {
         pasalString: kodePasalList.join(', '),
         totalJail: totalJail,
@@ -953,7 +958,6 @@ function hitungTotal() {
         adaHukumanMati: adaHukumanMati
     };
 
-    // Tampilkan tabel pasal dan penjara
     const pasalString = kodePasalList.join(', ');
     const isiTabel = `
         <p><strong>${pasalString}</strong> — <strong>${totalJail} hari</strong></p>
@@ -980,7 +984,6 @@ function kirimKeDiscord() {
         return;
     }
 
-    // Format pesan untuk Discord
     const message = {
         content: "**LAPORAN BARU**",
         embeds: [{
@@ -1000,7 +1003,6 @@ function kirimKeDiscord() {
         }]
     };
 
-    // Ganti WEBHOOK_URL_DISCORD dengan URL webhook Discord Anda
     const WEBHOOK_URL_DISCORD = "https://discord.com/api/webhooks/1368679759739093105/rZgo3X_YbC5rfaWLdzcgezAmZZNlARsFtGBmnhxEVX9QauvfP_Eqa4-Ym5XdPP1n5dRx";
     
     fetch(WEBHOOK_URL_DISCORD, {
