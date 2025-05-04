@@ -924,7 +924,7 @@ function hitungTotal() {
     const hasil = `
     Jumlah Pasal: ${totalPasal} pasal<br>
     Deskripsi Pelanggaran:<br>
-    <ul style="margin-left: 20px;">${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
+    <ul style="margin-left: 0px;">${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
     Total Denda: Rp. ${formatRupiah(totalDenda)}<br>
     Total Penjara: ${totalJail} hari<br>
     ${adaHukumanMati ? '<span style="color:red; font-weight:bold;">HUKUMAN MATI</span><br>' : ''}
