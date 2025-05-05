@@ -951,21 +951,21 @@ function hitungTotal() {
     });
 
     const hasil = `
-        <div style="text-align: left; line-height: 1.6;">
-            <strong>Jumlah Pasal:</strong> ${totalPasal} pasal<br>
-            <strong>Deskripsi Pelanggaran:</strong><br>
-            <ul style="margin-left: 20px; padding-left: 0; list-style-position: inside;">
-                ${deskripsiList.map(d => `<li style="margin-left: 0;">${d}</li>`).join('')}
-            </ul>
-            <strong>Total Denda:</strong> Rp. ${formatRupiah(totalDenda)}<br>
-            <strong>Total Penjara:</strong> ${totalJail} hari<br>
-            ${adaHukumanMati ? '<strong style="color:red;">HUKUMAN MATI</strong><br>' : ''}
-            <strong>Impound Kendaraan:</strong> ${perluImpound ? 'YA' : 'Tidak'}
-        </div>
-    `;
-    
-    document.getElementById('hasil-total').innerHTML = hasil;
-    document.getElementById('hasil-total').style.display = 'block';
+    <div style="text-align: left; line-height: 1.6;">
+        <strong>Jumlah Pasal:</strong> ${totalPasal} pasal<br>
+        <strong>Deskripsi Pelanggaran:</strong><br>
+        <ul style="margin-left: 20px; padding-left: 0; list-style-position: inside;">
+            ${deskripsiList.map(d => `<li style="margin-left: 0;">${d}</li>`).join('')}
+        </ul>
+        <strong>Total Denda:</strong> Rp. ${formatRupiah(totalDenda)}<br>
+        <strong>Total Penjara:</strong> ${totalJail} hari<br>
+        ${adaHukumanMati ? '<strong style="color:red;">HUKUMAN MATI</strong><br>' : ''}
+        <strong>Impound Kendaraan:</strong> ${perluImpound ? 'YA' : 'Tidak'}
+    </div>
+`;
+
+document.getElementById('hasil-total').innerHTML = hasil;
+document.getElementById('hasil-total').style.display = 'block';
 
     currentData = {
         pasalString: kodePasalList.join(', '),
