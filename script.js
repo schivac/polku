@@ -1,8 +1,6 @@
 // Variabel global untuk menyimpan data
 let currentData = {};
 
-// Semua function kamu tetap sama di sini, tidak perlu diubah, karena error utama dari HTML nya.
-
 function hitungTotal() {
     const checkboxes = document.querySelectorAll('.checkbox:checked');
 
@@ -95,6 +93,44 @@ function tampilkanModalDiscord() {
         return;
     }
     document.getElementById('discordModal').style.display = 'flex';
+    document.getElementById('previewContainer').style.display = 'none'; // Sembunyikan preview saat modal dibuka
+}
+
+function tampilkanPreview() {
+    if (Object.keys(currentData).length === 0) {
+        alert("Silahkan tekan tombol TOTAL terlebih dahulu!");
+        return;
+    }
+
+    const namaSuspect = document.getElementById('namaSuspect').value;
+    const idCard = document.getElementById('idCard').value;
+    const foto = document.getElementById('foto').value;
+    const namaPetugas = document.getElementById('namaPetugas').value;
+    
+    if (!namaSuspect || !namaPetugas) {
+        alert("Nama suspect dan petugas wajib diisi!");
+        return;
+    }
+
+    const previewMessage = 
+`**LAPORAN BARU - DATA PELANGGARAN**
+
+**NAMA SUSPECT:** ${namaSuspect}
+**ID CARD:** ${idCard || '-'}
+**PASAL:** ${currentData.pasalString}
+**FOTO:** ${foto || '-'}
+**BERAPA BULAN:** ${currentData.totalJail} hari
+**DENDA:** ${currentData.totalDenda}
+**KRONOLOGI SUSPECT:**
+${currentData.deskripsiList.map(item => `• ${item}`).join('\n')}
+**HUKUMAN MATI:** ${currentData.adaHukumanMati ? "YA" : "TIDAK"}
+
+**NAMA PETUGAS:** ${namaPetugas}
+*Laporan dibuat pada: ${new Date().toLocaleString()}*`;
+
+    document.getElementById('previewContainer').style.display = 'block';
+    document.getElementById('previewContent').textContent = previewMessage;
+    document.getElementById('previewContent').scrollIntoView({ behavior: 'smooth' });
 }
 
 function kirimKeDiscord() {
@@ -109,24 +145,24 @@ function kirimKeDiscord() {
     }
 
     if (!namaPetugas) {
-        alert("Nama petigas wajib di isi!");
+        alert("Nama petugas wajib diisi!");
         return;
     }
 
-const message = {
-    content: `**LAPORAN BARU - DATA PELANGGARAN**\n\n` +
-             `**NAMA SUSPECT:** ${namaSuspect}\n` +
-             `**ID CARD:** ${idCard}\n` +
-             `**PASAL:** ${currentData.pasalString}\n` +
-             `**FOTO:** ${foto}\n` +
-             `**BERAPA BULAN:** ${currentData.totalJail.toString()} hari\n` +
-             `**DENDA:** ${currentData.totalDenda}\n` +
-             `**KRONOLOGI SUSPECT:**\n` +
-             `${currentData.deskripsiList.map(item => `• ${item}`).join('\n')}\n` +
-             `**HUKUMAN MATI:** ${currentData.adaHukumanMati ? "YA" : "TIDAK"}\n\n` +
-             `**NAMA PETUGAS:** ${namaPetugas}\n` +
-             `*Laporan dibuat pada: ${new Date().toLocaleString()}*`
-};
+    const message = {
+        content: `**LAPORAN BARU - DATA PELANGGARAN**\n\n` +
+                 `**NAMA SUSPECT:** ${namaSuspect}\n` +
+                 `**ID CARD:** ${idCard}\n` +
+                 `**PASAL:** ${currentData.pasalString}\n` +
+                 `**FOTO:** ${foto}\n` +
+                 `**BERAPA BULAN:** ${currentData.totalJail.toString()} hari\n` +
+                 `**DENDA:** ${currentData.totalDenda}\n` +
+                 `**KRONOLOGI SUSPECT:**\n` +
+                 `${currentData.deskripsiList.map(item => `• ${item}`).join('\n')}\n` +
+                 `**HUKUMAN MATI:** ${currentData.adaHukumanMati ? "YA" : "TIDAK"}\n\n` +
+                 `**NAMA PETUGAS:** ${namaPetugas}\n` +
+                 `*Laporan dibuat pada: ${new Date().toLocaleString()}*`
+    };
 
     const WEBHOOK_URL_DISCORD = "https://discord.com/api/webhooks/1368679759739093105/rZgo3X_YbC5rfaWLdzcgezAmZZNlARsFtGBmnhxEVX9QauvfP_Eqa4-Ym5XdPP1n5dRx";
     
@@ -141,6 +177,12 @@ const message = {
         if (response.ok) {
             alert("Laporan berhasil dikirim ke Discord!");
             document.getElementById('discordModal').style.display = 'none';
+            document.getElementById('previewContainer').style.display = 'none';
+            // Reset form
+            document.getElementById('namaSuspect').value = '';
+            document.getElementById('idCard').value = '';
+            document.getElementById('foto').value = '';
+            document.getElementById('namaPetugas').value = '';
         } else {
             throw new Error('Gagal mengirim ke Discord');
         }
