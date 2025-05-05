@@ -809,7 +809,11 @@
     <td>HUKUMAN MATI</td>
 </tr>
 <tr>
-    <td class="checkbox-cell"><input type="checkbox" class="checkbox" data-code="D16" data-desc="TERORISME" data-fine="150000" data-jail="HUKUMAN MATI / 200 HARI" onchange="updateSelections()"></td>
+    <td class="checkbox-cell">
+        <input type="checkbox" id="checkbox-D16" class="checkbox" 
+               data-code="D16" data-desc="TERORISME" 
+               data-fine="150000" data-jail="HUKUMAN MATI / 200 HARI">
+    </td>
     <td class="code-cell">D16</td>
     <td>TERORISME</td>
     <td>HUKUMAN MATI / 200 HARI</td>
@@ -1110,15 +1114,17 @@ function formatRupiah(angka) {
 }
 
 function handleReset() {
-    // 1. Reset elemen-elemen yang ditentukan
+    // Reset checkbox
+    const checkboxes = document.querySelectorAll('.checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    
+    // Reset elemen lain
     document.getElementById('hasil-total').textContent = '0';
     document.getElementById('isi-tabel-uu').innerHTML = '';
     document.getElementById('tabel-uu').style.display = 'none';
     
-    // 2. Tambahkan logika lain yang sebelumnya ada di tampilkanModalDiscord()
-    // Contoh: tampilkan modal atau eksekusi kode lainnya
-    console.log("Reset berhasil dan eksekusi kode tambahan");
-    
-    // 3. Bisa tambahkan kustomisasi lainnya sesuai kebutuhan
+    console.log("Reset berhasil dilakukan termasuk membersihkan seleksi checkbox");
 }
 </script>
