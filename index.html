@@ -815,9 +815,22 @@
     <td>HUKUMAN MATI / 200 HARI</td>
     <td>$150000</td>
 </tr>
-<script src="script.js"></script>
     </tbody>
 </table>
+<!-- Tambahkan tombol KIRIM KE DISCORD di samping tombol SALIN -->
+<div style="margin-top: 20px; display: flex; gap: 10px;">
+    <button onclick="hitungTotal()" style="padding: 15px 30px; font-size: 20px; background-color: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        TOTAL
+    </button>
+
+    <button onclick="salinUU()" style="padding: 15px 30px; font-size: 20px; background-color: #28a745; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        SALIN UU, PENJARA
+    </button>
+
+    <button onclick="tampilkanModalDiscord()" style="padding: 15px 30px; font-size: 20px; background-color: #7289DA; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        KIRIM KE DISCORD
+    </button>
+</div>
 <!-- Tambahkan tombol KIRIM KE DISCORD di samping tombol SALIN -->
 <div style="margin-top: 20px; display: flex; gap: 10px;">
     <button onclick="hitungTotal()" style="padding: 15px 30px; font-size: 20px; background-color: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
@@ -874,4 +887,6 @@
     </div>
 </div>
 
+<!-- Include the external JavaScript file -->
+<script src="script.js"></script>
 
