@@ -817,64 +817,59 @@
 </tr>
     </tbody>
 </table>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Pelanggaran</title>
-    <link rel="stylesheet" href="style.css"> <!-- Kalau nanti mau pisahkan CSS -->
-</head>
-<body>
-
-<!-- Tombol-tombol -->
+    <!-- Tambahkan tombol KIRIM KE DISCORD di samping tombol SALIN -->
 <div style="margin-top: 20px; display: flex; gap: 10px;">
-    <button id="btnTotal" class="btn-primary">TOTAL</button>
-    <button id="btnSalin" class="btn-success">SALIN UU, PENJARA</button>
-    <button id="btnDiscord" class="btn-discord">KIRIM KE DISCORD</button>
+    <button onclick="hitungTotal()" style="padding: 15px 30px; font-size: 20px; background-color: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        TOTAL
+    </button>
+
+    <button onclick="salinUU()" style="padding: 15px 30px; font-size: 20px; background-color: #28a745; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        SALIN UU, PENJARA
+    </button>
+
+    <button onclick="tampilkanModalDiscord()" style="padding: 15px 30px; font-size: 20px; background-color: #7289DA; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        KIRIM KE DISCORD
+    </button>
 </div>
 
-<!-- Hasil Total -->
+<!-- Tambahkan elemen hasil total -->
 <div id="hasil-total" style="margin-top: 20px;"></div>
 
-<!-- Tabel UU -->
+<!-- Tambahkan elemen tabel UU -->
 <div id="tabel-uu" style="margin-top: 20px; display: none;">
     <div id="isi-tabel-uu"></div>
 </div>
 
-<!-- Modal Discord -->
-<div id="discordModal" class="modal">
-    <div class="modal-content">
+<!-- Modal untuk input data sebelum dikirim ke Discord -->
+<div id="discordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="background-color: white; padding: 20px; border-radius: 10px; width: 500px; max-width: 90%;">
         <h2>Kirim Laporan ke Discord</h2>
-
-        <div class="form-group">
-            <label>NAMA SUSPECT:</label>
-            <input type="text" id="namaSuspect">
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">NAMA SUSPECT:</label>
+            <input type="text" id="namaSuspect" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
         </div>
-
-        <div class="form-group">
-            <label>ID CARD:</label>
-            <select id="idCard">
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">ID CARD:</label>
+            <select id="idCard" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
                 <option value="Ada">Ada</option>
                 <option value="Tidak">Tidak</option>
             </select>
         </div>
-
-        <div class="form-group">
-            <label>FOTO:</label>
-            <select id="foto">
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">FOTO:</label>
+            <select id="foto" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
                 <option value="Ada">Ada</option>
                 <option value="Tidak">Tidak</option>
             </select>
         </div>
-
-        <div class="modal-actions">
-            <button id="btnKirimDiscord" class="btn-discord">Kirim</button>
-            <button id="btnBatal" class="btn-danger">Batal</button>
+        
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button onclick="kirimKeDiscord()" style="padding: 10px 20px; background-color: #7289DA; color: white; border: none; border-radius: 5px; cursor: pointer;">Kirim</button>
+            <button onclick="document.getElementById('discordModal').style.display = 'none'" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Batal</button>
         </div>
     </div>
 </div>
-
 <script src="script.js"></script>
-</body>
-</html>
-
