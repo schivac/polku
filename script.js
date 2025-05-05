@@ -1,8 +1,9 @@
-<script>
 // Variabel global untuk menyimpan data
 let currentData = {};
 
-// Semua function kamu tetap sama di sini, tidak perlu diubah, karena error utama dari HTML nya.
+function updateSelections() {
+    // Function implementation if needed
+}
 
 function hitungTotal() {
     const checkboxes = document.querySelectorAll('.checkbox:checked');
@@ -158,11 +159,4 @@ function salinUU() {
     }
 
     navigator.clipboard.writeText(isi)
-        .then(() => alert("Disalin ke clipboard:\n" + isi))
-        .catch(err => alert("Gagal menyalin: " + err));
-}
-
-function formatRupiah(angka) {
-    return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-</script>
+        .then(() => alert("
