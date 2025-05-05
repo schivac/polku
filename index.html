@@ -870,10 +870,13 @@
                 <option value="Tidak">Tidak</option>
             </select>
         </div>
-        
+        <div id="previewContainer" style="display: none; margin-top: 20px; padding: 15px; background: #2f3136; border-radius: 5px; max-height: 300px; overflow-y: auto;">
+        <h3 style="margin-top: 0; color: white;">PREVIEW PESAN DISCORD</h3>
+        <pre id="previewContent" style="white-space: pre-wrap; word-wrap: break-word; margin: 0; color: white;"></pre>
+        </div>
         <div style="display: flex; gap: 10px; margin-top: 20px;">
             <button onclick="kirimKeDiscord()" style="padding: 10px 20px; background-color: #7289DA; color: white; border: none; border-radius: 5px; cursor: pointer;">Kirim</button>
-            <button onclick="tampilkanPreview()" style="background-color: #5865F2; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">PREVIEW</button>
+            <button onclick="tampilkanPreview()" style="background-color: #5865F2; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">PREVIEW</button>      
             <button onclick="document.getElementById('discordModal').style.display = 'none'" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Batal</button>
         </div>
     </div>
