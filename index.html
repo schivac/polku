@@ -842,42 +842,46 @@
 
 <!-- Modal untuk input data sebelum dikirim ke Discord -->
 <div id="discordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
-    <div style="background-color: white; padding: 20px; border-radius: 10px; width: 500px; max-width: 90%;">
-        <h2>Kirim Laporan ke Discord</h2>
-        
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">NAMA SUSPECT:</label>
-            <input type="text" id="namaSuspect" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-        </div>
+    <div style="background-color: white; padding: 20px; border-radius: 10px; width: 500px; max-width: 90%; max-height: 90vh; display: flex; flex-direction: column;">
+        <div style="overflow-y: auto; flex-grow: 1;">
+            <h2>Kirim Laporan ke Discord</h2>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">NAMA SUSPECT:</label>
+                <input type="text" id="namaSuspect" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
 
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">NAMA PETUGAS:</label>
-            <input type="text" id="namaPetugas" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">NAMA PETUGAS:</label>
+                <input type="text" id="namaPetugas" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">ID CARD:</label>
+                <select id="idCard" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">FOTO:</label>
+                <select id="foto" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="Ada">Ada</option>
+                    <option value="Tidak">Tidak</option>
+                </select>
+            </div>
+            
+            <div id="previewContainer" style="display: none; margin-top: 20px; padding: 15px; background: #2f3136; border-radius: 5px; max-height: 300px; overflow-y: auto;">
+                <h3 style="margin-top: 0; color: white;">PREVIEW PESAN DISCORD</h3>
+                <pre id="previewContent" style="white-space: pre-wrap; word-wrap: break-word; margin: 0; color: white;"></pre>
+            </div>
         </div>
         
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">ID CARD:</label>
-            <select id="idCard" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                <option value="Ada">Ada</option>
-                <option value="Tidak">Tidak</option>
-            </select>
-        </div>
-        
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold;">FOTO:</label>
-            <select id="foto" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                <option value="Ada">Ada</option>
-                <option value="Tidak">Tidak</option>
-            </select>
-        </div>
-        <div id="previewContainer" style="display: none; margin-top: 20px; padding: 15px; background: #2f3136; border-radius: 5px; max-height: 300px; overflow-y: auto;">
-        <h3 style="margin-top: 0; color: white;">PREVIEW PESAN DISCORD</h3>
-        <pre id="previewContent" style="white-space: pre-wrap; word-wrap: break-word; margin: 0; color: white;"></pre>
-        </div>
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-            <button onclick="kirimKeDiscord()" style="padding: 10px 20px; background-color: #7289DA; color: white; border: none; border-radius: 5px; cursor: pointer;">Kirim</button>
-            <button onclick="tampilkanPreview()" style="background-color: #5865F2; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">PREVIEW</button>      
-            <button onclick="document.getElementById('discordModal').style.display = 'none'" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Batal</button>
+        <div style="display: flex; gap: 10px; margin-top: 20px; flex-shrink: 0;">
+            <button onclick="tampilkanPreview()" style="background-color: #5865F2; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; flex: 1;">PREVIEW</button>
+            <button onclick="kirimKeDiscord()" style="padding: 10px 20px; background-color: #7289DA; color: white; border: none; border-radius: 5px; cursor: pointer; flex: 1;">Kirim</button>
+            <button onclick="document.getElementById('discordModal').style.display = 'none'" style="padding: 10px 20px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; flex: 1;">Batal</button>
         </div>
     </div>
 </div>
