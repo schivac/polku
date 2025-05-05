@@ -830,6 +830,10 @@
     <button onclick="tampilkanModalDiscord()" style="padding: 15px 30px; font-size: 20px; background-color: #7289DA; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
         KIRIM KE DISCORD
     </button>
+
+    <button onclick="tampilkanModalDiscord()" style="padding: 15px 30px; font-size: 20px; background-color: #ff0303; color: white; border: none; border-radius: 10px; cursor: pointer; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+        RESET
+    </button>
 </div>
 
 <!-- Modal untuk input data sebelum dikirim ke Discord -->
@@ -1104,4 +1108,14 @@ function salinUU() {
 function formatRupiah(angka) {
     return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+// Reset 
+document.getElementById('Total').addEventListener('click', hitungTotal);
+document.getElementById('kirim-discord').addEventListener('click', function() {
+    if (Object.keys(currentData).length === 0) {
+        alert("Silahkan tekan tombol Total terlebih dahulu untuk mengumpulkan data pelanggaran.");
+        return;
+    }
+    tampilkanModalDiscord();
+});
+
 </script>
