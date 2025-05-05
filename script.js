@@ -1,10 +1,18 @@
-// Variabel global untuk menyimpan data
+// Variabel Global
 let currentData = {};
 
-function updateSelections() {
-    // Function implementation if needed
-}
+// Event Listener untuk tombol
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('btnTotal').addEventListener('click', hitungTotal);
+    document.getElementById('btnSalin').addEventListener('click', salinUU);
+    document.getElementById('btnDiscord').addEventListener('click', tampilkanModalDiscord);
+    document.getElementById('btnKirimDiscord').addEventListener('click', kirimKeDiscord);
+    document.getElementById('btnBatal').addEventListener('click', () => {
+        document.getElementById('discordModal').style.display = 'none';
+    });
+});
 
+// Fungsi-fungsi
 function hitungTotal() {
     const checkboxes = document.querySelectorAll('.checkbox:checked');
 
@@ -15,13 +23,9 @@ function hitungTotal() {
         return;
     }
 
-    let totalPasal = 0;
-    let totalDenda = 0;
-    let totalJail = 0;
-    let deskripsiList = [];
-    let perluImpound = false;
-    let adaHukumanMati = false;
-    let kodePasalList = [];
+    let totalPasal = 0, totalDenda = 0, totalJail = 0;
+    let deskripsiList = [], kodePasalList = [];
+    let perluImpound = false, adaHukumanMati = false;
 
     checkboxes.forEach(cb => {
         const fineRaw = cb.dataset.fine || "";
@@ -29,21 +33,10 @@ function hitungTotal() {
         const desc = cb.dataset.desc || "Tidak ada deskripsi";
         const code = cb.dataset.code || "???";
 
-        // Deteksi HUKUMAN MATI
-        if (jailRaw.toUpperCase().includes("HUKUMAN MATI")) {
-            adaHukumanMati = true;
-        }
+        if (jailRaw.toUpperCase().includes("HUKUMAN MATI")) adaHukumanMati = true;
 
-        // Hitung jumlah hari penjara
-        let jailAngka = 0;
-        if (jailRaw.includes("/")) {
-            const parts = jailRaw.split("/");
-            jailAngka = parseInt(parts[1]) || 0;
-        } else {
-            jailAngka = parseInt(jailRaw) || 0;
-        }
-
-        const denda = isNaN(parseInt(fineRaw)) ? 0 : parseInt(fineRaw);
+        let jailAngka = jailRaw.includes("/") ? parseInt(jailRaw.split("/")[1]) || 0 : parseInt(jailRaw) || 0;
+        let denda = isNaN(parseInt(fineRaw)) ? 0 : parseInt(fineRaw);
 
         totalPasal++;
         totalDenda += denda;
@@ -51,9 +44,7 @@ function hitungTotal() {
         deskripsiList.push(desc);
         kodePasalList.push(code);
 
-        if (jailRaw.toUpperCase().includes("IMPOUND") ||
-            fineRaw.toUpperCase().includes("IMPOUND") ||
-            desc.toUpperCase().includes("SAMSAT")) {
+        if (jailRaw.toUpperCase().includes("IMPOUND") || fineRaw.toUpperCase().includes("IMPOUND") || desc.toUpperCase().includes("SAMSAT")) {
             perluImpound = true;
         }
     });
@@ -62,32 +53,26 @@ function hitungTotal() {
         <div style="text-align: left; line-height: 1.6;">
             <strong>Jumlah Pasal:</strong> ${totalPasal} pasal<br>
             <strong>Deskripsi Pelanggaran:</strong><br>
-            <ul style="margin-left: 20px; padding-left: 0; list-style-position: inside;">
-                ${deskripsiList.map(d => `<li style="margin-left: 0;">${d}</li>`).join('')}
-            </ul>
+            <ul>${deskripsiList.map(d => `<li>${d}</li>`).join('')}</ul>
             <strong>Total Denda:</strong> Rp. ${formatRupiah(totalDenda)}<br>
             <strong>Total Penjara:</strong> ${totalJail} hari<br>
             ${adaHukumanMati ? '<strong style="color:red;">HUKUMAN MATI</strong><br>' : ''}
             <strong>Impound Kendaraan:</strong> ${perluImpound ? 'YA' : 'Tidak'}
         </div>
     `;
-    
+
     document.getElementById('hasil-total').innerHTML = hasil;
     document.getElementById('hasil-total').style.display = 'block';
 
     currentData = {
         pasalString: kodePasalList.join(', '),
-        totalJail: totalJail,
+        totalJail,
         totalDenda: formatRupiah(totalDenda),
-        deskripsiList: deskripsiList,
-        adaHukumanMati: adaHukumanMati
+        deskripsiList,
+        adaHukumanMati
     };
 
-    const pasalString = kodePasalList.join(', ');
-    const isiTabel = `
-        <p><strong>${pasalString}</strong> — <strong>${totalJail} hari</strong></p>
-    `;
-    document.getElementById('isi-tabel-uu').innerHTML = isiTabel;
+    document.getElementById('isi-tabel-uu').innerHTML = `<p><strong>${currentData.pasalString}</strong> — <strong>${totalJail} hari</strong></p>`;
     document.getElementById('tabel-uu').style.display = 'block';
 }
 
@@ -103,7 +88,7 @@ function kirimKeDiscord() {
     const namaSuspect = document.getElementById('namaSuspect').value;
     const idCard = document.getElementById('idCard').value;
     const foto = document.getElementById('foto').value;
-    
+
     if (!namaSuspect) {
         alert("Nama suspect harus diisi!");
         return;
@@ -129,12 +114,10 @@ function kirimKeDiscord() {
     };
 
     const WEBHOOK_URL_DISCORD = "https://discord.com/api/webhooks/1368679759739093105/rZgo3X_YbC5rfaWLdzcgezAmZZNlARsFtGBmnhxEVX9QauvfP_Eqa4-Ym5XdPP1n5dRx";
-    
+
     fetch(WEBHOOK_URL_DISCORD, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(message)
     })
     .then(response => {
@@ -159,4 +142,10 @@ function salinUU() {
     }
 
     navigator.clipboard.writeText(isi)
-        .then(() => alert("
+        .then(() => alert("Disalin ke clipboard:\n" + isi))
+        .catch(err => alert("Gagal menyalin: " + err));
+}
+
+function formatRupiah(angka) {
+    return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
