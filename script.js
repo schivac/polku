@@ -101,30 +101,32 @@ function kirimKeDiscord() {
     const namaSuspect = document.getElementById('namaSuspect').value;
     const idCard = document.getElementById('idCard').value;
     const foto = document.getElementById('foto').value;
+    const namaPetugas = document.getElementById('namaPetugas').value;
     
     if (!namaSuspect) {
         alert("Nama suspect harus diisi!");
         return;
     }
 
-    const message = {
-        content: "**LAPORAN BARU**",
-        embeds: [{
-            title: "DATA PELANGGARAN",
-            color: 0xff0000,
-            fields: [
-                { name: "NAMA SUSPECT", value: namaSuspect },
-                { name: "ID CARD", value: idCard },
-                { name: "PASAL", value: currentData.pasalString },
-                { name: "FOTO", value: foto },
-                { name: "BERAPA BULAN", value: currentData.totalJail.toString() },
-                { name: "DENDA", value: currentData.totalDenda },
-                { name: "KRONOLOGI SUSPECT", value: '• ' + currentData.deskripsiList.join('\n• ') },
-                { name: "HUKUMAN MATI", value: currentData.adaHukumanMati ? "YA" : "TIDAK" }
-            ],
-            timestamp: new Date().toISOString()
-        }]
-    };
+    if (!namaPetugas) {
+        alert("Nama petigas wajib di isi!");
+        return;
+    }
+
+const message = {
+    content: `**LAPORAN BARU - DATA PELANGGARAN**\n\n` +
+             `**NAMA SUSPECT:** ${namaSuspect}\n` +
+             `**ID CARD:** ${idCard}\n` +
+             `**PASAL:** ${currentData.pasalString}\n` +
+             `**FOTO:** ${foto}\n` +
+             `**BERAPA BULAN:** ${currentData.totalJail.toString()} hari\n` +
+             `**DENDA:** ${currentData.totalDenda}\n` +
+             `**KRONOLOGI SUSPECT:**\n` +
+             `${currentData.deskripsiList.map(item => `• ${item}`).join('\n')}\n` +
+             `**HUKUMAN MATI:** ${currentData.adaHukumanMati ? "YA" : "TIDAK"}\n\n` +
+             `**NAMA PETUGAS:** ${namaPetugas}\n` +
+             `*Laporan dibuat pada: ${new Date().toLocaleString()}*`
+};
 
     const WEBHOOK_URL_DISCORD = "https://discord.com/api/webhooks/1368679759739093105/rZgo3X_YbC5rfaWLdzcgezAmZZNlARsFtGBmnhxEVX9QauvfP_Eqa4-Ym5XdPP1n5dRx";
     
